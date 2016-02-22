@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208002812) do
+ActiveRecord::Schema.define(version: 20160222120210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clubs", force: :cascade do |t|
+    t.string   "name"
+    t.string   "model"
+    t.string   "company"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "short_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -31,5 +46,55 @@ ActiveRecord::Schema.define(version: 20160208002812) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "holes", force: :cascade do |t|
+    t.integer  "number",     null: false
+    t.integer  "par",        null: false
+    t.integer  "handicap",   null: false
+    t.integer  "yards",      null: false
+    t.integer  "score",      null: false
+    t.integer  "round_id",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "holes", ["round_id"], name: "index_holes_on_round_id", using: :btree
+
+  create_table "rounds", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "weather"
+    t.string   "wind"
+    t.string   "temp"
+    t.string   "handicap_valid"
+    t.integer  "tee_id",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rounds", ["tee_id"], name: "index_rounds_on_tee_id", using: :btree
+
+  create_table "shots", force: :cascade do |t|
+    t.integer  "club_id",    null: false
+    t.integer  "yards",      null: false
+    t.string   "lie",        null: false
+    t.integer  "number",     null: false
+    t.integer  "hole_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shots", ["club_id"], name: "index_shots_on_club_id", using: :btree
+  add_index "shots", ["hole_id"], name: "index_shots_on_hole_id", using: :btree
+
+  create_table "tees", force: :cascade do |t|
+    t.string   "color",      null: false
+    t.string   "rating",     null: false
+    t.integer  "slope",      null: false
+    t.integer  "course_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tees", ["course_id"], name: "index_tees_on_course_id", using: :btree
 
 end
