@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Strokes Expected Putts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @strokes_expected_putts.each do |strokes_expected_putt| %>
+      <tr>
+        <td><%= link_to 'Show', strokes_expected_putt %></td>
+        <td><%= link_to 'Edit', edit_strokes_expected_putt_path(strokes_expected_putt) %></td>
+        <td><%= link_to 'Destroy', strokes_expected_putt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Strokes expected putt', new_strokes_expected_putt_path %>

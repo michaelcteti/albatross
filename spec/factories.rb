@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :strokes_expected_putt do
+    
+  end
   factory :shot do
     
   end
