@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331142846) do
+ActiveRecord::Schema.define(version: 20160331171229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,21 +74,30 @@ ActiveRecord::Schema.define(version: 20160331142846) do
   add_index "rounds", ["tee_id"], name: "index_rounds_on_tee_id", using: :btree
 
   create_table "shots", force: :cascade do |t|
-    t.integer  "club_id",    null: false
-    t.integer  "yards",      null: false
-    t.string   "lie",        null: false
-    t.integer  "number",     null: false
-    t.integer  "hole_id",    null: false
+    t.integer  "club_id"
+    t.integer  "yards"
+    t.string   "lie"
+    t.integer  "number",                           null: false
+    t.integer  "hole_id",                          null: false
+    t.boolean  "penalty",          default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "strokes_expected"
   end
 
-  add_index "shots", ["club_id"], name: "index_shots_on_club_id", using: :btree
   add_index "shots", ["hole_id"], name: "index_shots_on_hole_id", using: :btree
 
   create_table "strokes_expected_putts", force: :cascade do |t|
     t.integer  "distance"
     t.float    "strokes_expected"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "strokes_expected_shots", force: :cascade do |t|
+    t.integer  "distance"
+    t.float    "strokes_expected"
+    t.string   "lie"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
