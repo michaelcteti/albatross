@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331171229) do
+ActiveRecord::Schema.define(version: 20160331195855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,14 @@ ActiveRecord::Schema.define(version: 20160331171229) do
     t.string   "wind"
     t.string   "temp"
     t.string   "handicap_valid"
-    t.integer  "tee_id",         null: false
+    t.integer  "tee_id",                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "strokes_gained"
+    t.float    "strokes_gained_driving"
+    t.float    "strokes_gained_approach"
+    t.float    "strokes_gained_short_game"
+    t.float    "strokes_gained_putting"
   end
 
   add_index "rounds", ["tee_id"], name: "index_rounds_on_tee_id", using: :btree
@@ -83,6 +88,7 @@ ActiveRecord::Schema.define(version: 20160331171229) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "strokes_expected"
+    t.string   "shot_type"
   end
 
   add_index "shots", ["hole_id"], name: "index_shots_on_hole_id", using: :btree
