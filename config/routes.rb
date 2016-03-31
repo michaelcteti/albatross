@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :tees
 
   resources :strokes_expected_putts
+  resources :strokes_expected_shots
 end

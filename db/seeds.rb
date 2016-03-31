@@ -21,3 +21,24 @@ end
 
 # Strokes Expected Shots
 # Calculate each section in between....probably just average
+
+#Tee
+StrokesExpectedShot.create(distance: 100, strokes_expected: 2.92, lie: 'T')
+StrokesExpectedShot.create(distance: 120, strokes_expected: 2.99, lie: 'T')
+StrokesExpectedShot.create(distance: 140, strokes_expected: 2.97, lie: 'T')
+StrokesExpectedShot.create(distance: 160, strokes_expected: 2.99, lie: 'T')
+StrokesExpectedShot.create(distance: 180, strokes_expected: 3.05, lie: 'T')
+StrokesExpectedShot.create(distance: 200, strokes_expected: 3.12, lie: 'T')
+
+#Fairway
+StrokesExpectedShot.create(distance: 100, strokes_expected: 2.80, lie: 'F')
+
+#Rough
+StrokesExpectedShot.create(distance: 100, strokes_expected: 3.02, lie: 'R')
+
+#Sand
+StrokesExpectedShot.create(distance: 100, strokes_expected: 3.23, lie: 'S')
+
+#Recovery
+StrokesExpectedShot.create(distance: 100, strokes_expected: 3.80, lie: 'X')
+
